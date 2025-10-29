@@ -12,7 +12,7 @@
     <!-- Thư viện Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <style>
-        /* Thiết lập font Inter cho toàn bộ body và dark mode chuyên nghiệp */
+        /* Thiết lập font Inter cho toàn bộ body và dark mode chuyên nghiệp (LẤY TỪ FILE 1.HTML) */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #0f172a; /* Slate 900 */
@@ -26,18 +26,41 @@
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
         }
 
-        /* Màu chủ đạo (Primary Color) - Xanh ngọc bích */
-        .text-primary {
-            color: #34d399; /* Emerald 400 */
+        /* === ĐỊNH NGHĨA MÀU SẮC MỚI THEO FILE 1.HTML === */
+
+        /* Màu chủ đạo (Primary Color) - Xanh Lam Sáng (#0f7aef) */
+        .text-primary, .border-primary {
+            color: #0f7aef;
         }
 
+        /* Màu nhấn (Accent Color) - Xanh da trời sáng (#6ce3ff) */
+        .bg-accent {
+            background-color: #6ce3ff;
+        }
+
+        /* Màu nền tiến trình/circle active: Dùng Accent Color */
         .bg-primary {
-            background-color: #34d399;
+            background-color: #0f7aef; /* Dùng Primary cho thanh tiến trình và border */
+        }
+        
+        /* Màu nền nút CTA lớn: Dùng Accent Color */
+        .cta-bg {
+            background-color: #6ce3ff; 
         }
 
-        .hover\:bg-primary-dark:hover {
-            background-color: #10b981; /* Emerald 500 */
+        .cta-bg:hover {
+            background-color: #55c8e6; /* Màu hover tự chọn, sáng hơn một chút so với #6ce3ff */
         }
+        
+        /* Màu cho nút liên kết sàn (Land Prime): Giữ màu vàng nổi bật */
+        .bg-landprime {
+            background-color: #fcd878; /* Vàng Nhạt (#fcd878) */
+        }
+
+        .bg-landprime:hover {
+            background-color: #fce6a8; 
+        }
+
 
         /* Hiệu ứng cho nút CTA lớn */
         .cta-button {
@@ -46,7 +69,8 @@
 
         .cta-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px -5px rgba(52, 211, 153, 0.5);
+            /* Tăng bóng đổ với màu Accent */
+            box-shadow: 0 8px 25px -5px rgba(108, 227, 255, 0.5); 
         }
 
         /* === CSS CHO HIỆU ỨNG CHUYỂN ĐỘNG (TRANSITION) === */
@@ -82,10 +106,11 @@
             <div class="flex justify-between items-center relative">
                 <!-- Đường kẻ nối (Progress Line) -->
                 <div class="absolute top-1/2 left-0 right-0 h-1 bg-slate-700 mx-10 sm:mx-12">
+                    <!-- Progress Line dùng bg-primary (#0f7aef) -->
                     <div id="progress-line" class="absolute h-full bg-primary transition-all duration-500 ease-out w-0"></div>
                 </div>
 
-                <!-- Step 1 Circle -->
+                <!-- Step 1 Circle (active circle dùng bg-primary) -->
                 <div id="circle-1" class="z-10 w-10 h-10 rounded-full flex items-center justify-center font-bold transition-all duration-300 bg-primary text-gray-900 shadow-md">
                     1
                 </div>
@@ -125,8 +150,9 @@
                     </div>
                 </div>
                 
+                <!-- Nút CTA dùng cta-bg (Accent Color: #6ce3ff) -->
                 <button onclick="showStep(1)"
-                    class="mt-8 cta-button w-full block bg-primary hover:bg-primary-dark text-gray-900 font-extrabold text-xl py-5 rounded-xl uppercase tracking-wider shadow-lg">
+                    class="mt-8 cta-button w-full block cta-bg hover:cta-bg text-gray-900 font-extrabold text-xl py-5 rounded-xl uppercase tracking-wider shadow-lg">
                     BẮT ĐẦU NGAY
                     <i data-lucide="chevrons-right" class="w-5 h-5 ml-2 inline-block"></i>
                 </button>
@@ -148,6 +174,7 @@
                 
                 <h3 class="text-2xl font-bold text-white pt-2 mb-4">Hướng dẫn chi tiết:</h3>
                 <ol class="list-decimal list-inside space-y-4 text-gray-300 ml-4">
+                    <!-- Border dùng border-primary -->
                     <li class="p-3 card rounded-lg border-l-4 border-primary/50">
                         <strong class="text-white">Truy cập Link:</strong> Nhấn vào nút bên dưới để bắt đầu đăng ký. Hãy kiểm tra Mã giới thiệu Land Prime đã được điền là <strong class="text-primary">a49b0f59b0039f80</strong>.
                     </li>
@@ -159,16 +186,16 @@
                     </li>
                 </ol>
 
-                <!-- Link đăng ký Land Prime -->
+                <!-- Link đăng ký Land Prime dùng bg-landprime (Vàng Nhạt) -->
                 <a href="https://www.landprime.pro/register/?code=a49b0f59b0039f80" target="_blank"
-                    class="block w-full text-center bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-extrabold text-xl py-4 rounded-xl shadow-lg transition duration-300 flex items-center justify-center cta-button mt-8">
+                    class="block w-full text-center bg-landprime hover:bg-landprime text-gray-900 font-extrabold text-xl py-4 rounded-xl shadow-lg transition duration-300 flex items-center justify-center cta-button mt-8">
                     <i data-lucide="external-link" class="w-6 h-6 mr-3"></i>
                     ĐĂNG KÝ SÀN LAND PRIME NGAY
                 </a>
                 
-                <!-- Nút chuyển sang bước 2 -->
+                <!-- Nút chuyển sang bước 2 dùng cta-bg (Accent Color: #6ce3ff) -->
                 <button onclick="showStep(2)"
-                    class="mt-8 cta-button w-full block bg-primary hover:bg-primary-dark text-gray-900 font-extrabold text-xl py-4 rounded-xl uppercase tracking-wider shadow-lg">
+                    class="mt-8 cta-button w-full block cta-bg hover:cta-bg text-gray-900 font-extrabold text-xl py-4 rounded-xl uppercase tracking-wider shadow-lg">
                     ĐÃ HOÀN TẤT BƯỚC 1 - CHUYỂN SANG ĐĂNG KÝ BOT
                     <i data-lucide="arrow-right" class="w-5 h-5 ml-2 inline-block"></i>
                 </button>
@@ -190,6 +217,7 @@
 
                 <h3 class="text-2xl font-bold text-white pt-2 mb-4">Các bước kích hoạt Bot:</h3>
                 <ul class="list-disc list-inside space-y-4 text-gray-300 ml-4">
+                    <!-- Border dùng border-primary -->
                     <li class="p-3 card rounded-lg border-l-4 border-primary/50">
                         <strong class="text-white">Đăng ký Tài khoản Bot:</strong> Truy cập link dưới đây để đăng ký Bot của SFI, đảm bảo bạn thuộc hệ thống SFI Club để được hỗ trợ cài đặt Bot (chỉ trả phí VPS).
                     </li>
@@ -201,14 +229,14 @@
                     </li>
                 </ul>
                 
-                <!-- Link đăng ký Bot -->
+                <!-- Link đăng ký Bot dùng cta-bg (Accent Color: #6ce3ff) -->
                 <a href="https://sficapital.vn/auto-trade?am_id=linguyn8293" target="_blank"
-                    class="block w-full text-center bg-primary hover:bg-primary-dark text-gray-900 font-extrabold text-xl py-4 rounded-xl shadow-lg transition duration-300 flex items-center justify-center cta-button mt-8">
+                    class="block w-full text-center cta-bg hover:cta-bg text-gray-900 font-extrabold text-xl py-4 rounded-xl shadow-lg transition duration-300 flex items-center justify-center cta-button mt-8">
                     <i data-lucide="cpu" class="w-6 h-6 mr-3"></i>
                     ĐĂNG KÝ HỆ THỐNG BOT SFI NGAY
                 </a>
                 
-                <!-- Liên hệ Hỗ trợ -->
+                <!-- Liên hệ Hỗ trợ: Giữ màu đỏ cho sự khẩn cấp -->
                 <div class="mt-8 text-center border-t border-slate-700 pt-6">
                     <p class="text-lg font-semibold text-white mb-4">Cần Hỗ trợ Gấp về Kích hoạt/Cài đặt?</p>
                     <a href="tel:0869912102"
@@ -254,27 +282,42 @@
             if (activeStep) {
                 activeStep.classList.remove('hidden');
                 
-                // Cập nhật UI theo bước
+                // Cập nhật UI theo bước:
+                // circle active và progressLine dùng bg-primary (#0f7aef)
+                const activeColorClass = 'bg-primary'; 
+                const inactiveColorClass = 'bg-slate-700';
+
                 if (stepNumber === 1) {
                     stepTitle.textContent = 'Bước 1: Đăng ký Land Prime (Hoàn thành 50%)';
-                    circle1.classList.add('bg-primary', 'text-gray-900');
-                    circle1.classList.remove('bg-slate-700', 'text-gray-400');
-                    circle2.classList.remove('bg-primary', 'text-gray-900');
-                    circle2.classList.add('bg-slate-700', 'text-gray-400');
+                    
+                    // Circle 1 Active
+                    circle1.classList.add(activeColorClass, 'text-gray-900');
+                    circle1.classList.remove(inactiveColorClass, 'text-gray-400');
+                    
+                    // Circle 2 Inactive
+                    circle2.classList.remove(activeColorClass, 'text-gray-900');
+                    circle2.classList.add(inactiveColorClass, 'text-gray-400');
+
                     progressLine.style.width = '50%';
                 } else if (stepNumber === 2) {
                     stepTitle.textContent = 'Bước 2: Đăng ký Bot SFI (Hoàn thành 100%)';
-                    circle1.classList.add('bg-primary', 'text-gray-900');
-                    circle2.classList.add('bg-primary', 'text-gray-900');
-                    circle2.classList.remove('bg-slate-700', 'text-gray-400');
+                    
+                    // Circle 1 & 2 Active
+                    circle1.classList.add(activeColorClass, 'text-gray-900');
+                    circle2.classList.add(activeColorClass, 'text-gray-900');
+                    circle2.classList.remove(inactiveColorClass, 'text-gray-400');
+
                     progressLine.style.width = '100%';
                 } else {
                     // Màn hình giới thiệu (step 0)
                     stepTitle.textContent = 'Tổng quan Quy trình';
-                    circle1.classList.remove('bg-primary', 'text-gray-900');
-                    circle1.classList.add('bg-slate-700', 'text-gray-400');
-                    circle2.classList.remove('bg-primary', 'text-gray-900');
-                    circle2.classList.add('bg-slate-700', 'text-gray-400');
+                    
+                    // Circle 1 & 2 Inactive
+                    circle1.classList.remove(activeColorClass, 'text-gray-900');
+                    circle1.classList.add(inactiveColorClass, 'text-gray-400');
+                    circle2.classList.remove(activeColorClass, 'text-gray-900');
+                    circle2.classList.add(inactiveColorClass, 'text-gray-400');
+
                     progressLine.style.width = '0%';
                 }
 
